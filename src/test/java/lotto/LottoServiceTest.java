@@ -1,5 +1,6 @@
 package lotto;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -7,6 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -41,5 +43,18 @@ public class LottoServiceTest {
             // Then
             assertTrue(lottoNumbers.stream().allMatch(n -> n >= 1 && n <= 45), "로또 숫자는 1부터 45 사이여야 한다");
         }
+    }
+
+    @Test
+    @DisplayName("정상 금액 구매 시 로또 개수를 정확히 계산한다.")
+    void calculate_LottoCount_ExactDivision(){
+        // Given
+        Long purchaseAmount = 5000L;
+
+        // When
+        Long purchaseCount = lottoService.calculateLottoCount(purchaseAmount);
+
+        // Then
+        assertThat(purchaseCount).isEqualTo(5);
     }
 }
