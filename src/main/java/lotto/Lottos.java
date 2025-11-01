@@ -7,15 +7,21 @@ public class Lottos {
 
     private final Long purchaseAmount;
     private final Long purchaseCount;
-    private final List<Lotto> lottos;
+    private final List<Lotto> lotto;
 
     public Lottos(Long purchaseAmount, Long purchaseCount, List<Lotto> purchasedLotto) {
         this.purchaseAmount = purchaseAmount;
         this.purchaseCount = purchaseCount;
-        this.lottos = purchasedLotto;
+        this.lotto = purchasedLotto;
     }
 
     public String purchseCountMessage(){
         return "\n" + purchaseCount + PURCHASE_COUNT_PRINT_FORMAT;
+    }
+
+    public String lottoNumberMessage() {
+        return String.join("", lotto.stream()
+                .map(Lotto::buildLottoNumberMessage)
+                .toList());
     }
 }

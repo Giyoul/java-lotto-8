@@ -13,6 +13,8 @@ public class LottoController {
         String purchaseCount = lottoService.getPurchaseCountMessage();
         outputView.printFormattedMessage(purchaseCount);
 
+        String purchaseLottoNumber = lottoService.getLottoNumber();
+        outputView.printFormattedMessage(purchaseLottoNumber);
 
     }
 }

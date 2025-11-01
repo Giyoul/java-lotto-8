@@ -33,4 +33,7 @@ public class LottoService {
         return lottos.purchseCountMessage();
     }
 
+    String getLottoNumber(){
+        return lottos.lottoNumberMessage();
+    }
 }

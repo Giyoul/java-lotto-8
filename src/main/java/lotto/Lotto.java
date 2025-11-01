@@ -16,5 +16,11 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public String buildLottoNumberMessage(){
+        return "[" + String.join(", ",
+                numbers.stream()
+                        .map(String::valueOf)
+                        .toList()
+        ) + "]\n";
+    }
 }
