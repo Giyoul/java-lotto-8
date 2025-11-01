@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.List;
+
 public class LottoController {
     private final OutputView outputView = new OutputView();
     private final InputView inputView = new InputView();
@@ -17,5 +19,6 @@ public class LottoController {
         outputView.printFormattedMessage(purchaseLottoNumber);
 
         outputView.printWinnerNumberPrompt();
+        List<Integer> winnerNumbers = inputView.readWinnerNumbers();
     }
 }
