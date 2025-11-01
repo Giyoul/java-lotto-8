@@ -16,5 +16,6 @@ public class LottoController {
         String purchaseLottoNumber = lottoService.getLottoNumber();
         outputView.printFormattedMessage(purchaseLottoNumber);
 
+        outputView.printWinnerNumberPrompt();
     }
 }
