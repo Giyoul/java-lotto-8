@@ -29,7 +29,7 @@ public class LottoService {
         return purchaseAmount / LOTTO_PRICE;
     }
 
-    String getPurchaseCount(){
+    String getPurchaseCountMessage(){
         return lottos.purchseCountMessage();
     }
 
