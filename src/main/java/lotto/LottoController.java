@@ -21,5 +21,7 @@ public class LottoController {
         outputView.printWinnerNumberPrompt();
         List<Integer> winnerNumbers = inputView.readWinnerNumbers();
         lottoService.saveWinnerNumbers(winnerNumbers);
+
+        outputView.printBonusNumberPrompt();
     }
 }
