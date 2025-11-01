@@ -22,4 +22,9 @@ public class InputView {
                 .map(Integer::parseInt)
                 .toList();
     }
+
+    public Integer readBonusNumber() {
+        String bonusNumber = Console.readLine();
+        return Integer.parseInt(bonusNumber);
+    }
 }

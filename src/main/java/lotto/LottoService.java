@@ -44,6 +44,6 @@ public class LottoService {
     }
 
     public void saveBonusNumber(Integer bonusNumber) {
-        this.winningLotto = new WinningLotto(tempWinnerNumbers, bonusNumber);
+        this.winningLotto = new WinningLotto(tempWinnerLotto, bonusNumber);
     }
 }
