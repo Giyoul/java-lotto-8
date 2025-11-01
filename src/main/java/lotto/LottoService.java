@@ -8,6 +8,7 @@ public class LottoService {
     private static final long LOTTO_PRICE = 1000L;
 
     private Lottos lottos;
+    private List<Integer> tempWinnerNumbers;
     private WinningLotto winningLotto;
 
     public void purchaseLotto(Long purchaseAmount){
@@ -39,6 +40,10 @@ public class LottoService {
     }
 
     public void saveWinnerNumbers(List<Integer> winnerNumbers) {
-        this.winningLotto = new WinningLotto(winnerNumbers);
+        this.tempWinnerNumbers = winnerNumbers;
+    }
+
+    public void saveBonusNumber(Integer bonusNumber) {
+        this.winningLotto = new WinningLotto()
     }
 }
