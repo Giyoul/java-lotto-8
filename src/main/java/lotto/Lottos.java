@@ -3,6 +3,8 @@ package lotto;
 import java.util.List;
 
 public class Lottos {
+    public static final String PURCHASE_COUNT_PRINT_FORMAT = "개를 구매했습니다.";
+
     private final Long purchaseAmount;
     private final Long purchaseCount;
     private final List<Lotto> lottos;
@@ -11,5 +13,9 @@ public class Lottos {
         this.purchaseAmount = purchaseAmount;
         this.purchaseCount = purchaseCount;
         this.lottos = purchasedLotto;
+    }
+
+    public String purchseCountMessage(){
+        return "\n" + purchaseCount + PURCHASE_COUNT_PRINT_FORMAT;
     }
 }

@@ -6,4 +6,8 @@ public class OutputView {
     public void printPurchaseMessage(){
         System.out.println(ASK_PURCHASE);
     }
+
+    public void printFormattedMessage(String message) {
+        System.out.println(message);
+    }
 }

@@ -9,5 +9,8 @@ public class LottoController {
         outputView.printPurchaseMessage();
         Long purchaseAmount = inputView.readPurchaseAmount();
         lottoService.purchaseLotto(purchaseAmount);
+
+        String purchaseCount = lottoService.getPurchaseCount();
+        outputView.printFormattedMessage(purchaseCount);
     }
 }

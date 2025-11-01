@@ -28,4 +28,9 @@ public class LottoService {
     Long calculateLottoCount(Long purchaseAmount) {
         return purchaseAmount / LOTTO_PRICE;
     }
+
+    String getPurchaseCount(){
+        return lottos.purchseCountMessage();
+    }
+
 }
