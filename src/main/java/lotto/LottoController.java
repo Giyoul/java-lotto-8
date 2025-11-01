@@ -6,7 +6,7 @@ public class LottoController {
     private final LottoService lottoService = new LottoService();
 
     public void run() {
-        outputView.printPurchaseMessage();
+        outputView.printPurchasePrompt();
         Long purchaseAmount = inputView.readPurchaseAmount();
         lottoService.purchaseLotto(purchaseAmount);
 
