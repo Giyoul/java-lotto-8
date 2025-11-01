@@ -8,6 +8,7 @@ public class LottoService {
     private static final long LOTTO_PRICE = 1000L;
 
     private Lottos lottos;
+    private WinningLotto winningLotto;
 
     public void purchaseLotto(Long purchaseAmount){
         Long lottoCount = calculateLottoCount(purchaseAmount);
@@ -35,5 +36,9 @@ public class LottoService {
 
     String getLottoNumber(){
         return lottos.lottoNumberMessage();
+    }
+
+    public void saveWinnerNumbers(List<Integer> winnerNumbers) {
+        this.winningLotto = new WinningLotto(winnerNumbers);
     }
 }

@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Arrays;
 import java.util.List;
 
 public class InputView {
@@ -11,7 +12,14 @@ public class InputView {
     }
 
     public List<Integer> readWinnerNumbers() {
-        String winnerNumbers = Console.readLine();
-        
+        String winnerNumber = Console.readLine();
+        return parseWinnerNumber(winnerNumber);
+    }
+
+    List<Integer> parseWinnerNumber(String winnerNumber) {
+        return Arrays.stream(winnerNumber.split(","))
+                .map(String::trim)
+                .map(Integer::parseInt)
+                .toList();
     }
 }
