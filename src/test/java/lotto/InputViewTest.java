@@ -262,5 +262,16 @@ public class InputViewTest {
                 inputView.bonusNumberValidation(input);
             });
         }
+
+        @Test
+        void 보너스_번호는_숫자여야_합니다() {
+            // Given
+            String input = "a";
+
+            // When & Then
+            assertThrows(NumberFormatException.class, () -> {
+                inputView.bonusNumberValidation(input);
+            });
+        }
     }
 }
