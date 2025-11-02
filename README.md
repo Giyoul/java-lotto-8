@@ -1,5 +1,18 @@
 # java-lotto-precourse
-## 💪 프로젝트 소개
+
+## 📋 목차
+- [프로젝트 소개](#프로젝트-소개)
+- [주요 기능](#주요-기능)
+- [프로젝트 구조](#프로젝트-구조)
+- [실행 방법](#실행-방법)
+- [게임 규칙](#게임-규칙)
+- [예외 처리](#예외-처리)
+- [구현 기능 목록](#구현-기능-목록)
+- [커밋 컨벤션](#커밋-컨벤션)
+
+---
+
+## 프로젝트 소개
 > 이 프로젝트는 우아한형제들 프리코스 과제로, 객체지향 원칙을 적용하여 로또 게임을 구현한 콘솔 애플리케이션입니다.
 > 사용자가 로또를 구매하고, 당첨 번호를 입력하면 구매한 로또의 등수별 당첨 통계와 수익률을 계산하여 보여줍니다.
 
@@ -10,7 +23,7 @@
 
 ---
 
-## ✨ 주요 기능
+## 주요 기능
 
 ### 1. 로또 구매
 - 구매 금액을 입력받아 해당 금액만큼 로또를 자동으로 구매합니다.
@@ -38,7 +51,7 @@
 
 ---
 
-## 📁 프로젝트 구조
+## 프로젝트 구조
 ```markdown
 src/main/java/lotto/
 ├── Application.java          # 프로그램 진입점
@@ -63,7 +76,7 @@ Domain (Lotto, Lottos, WinningLotto, LottoStatistics)
 
 ---
 
-## ▶️ 실행 방법
+## 실행 방법
 ### 1. 사전 요구사항
 - java 21
 
@@ -96,7 +109,7 @@ Domain (Lotto, Lottos, WinningLotto, LottoStatistics)
 ```
 
 ---
-## ✈️ 게임 규칙
+## 게임 규칙
 ### 로또 번호 규칙
 - 개수 : 정확히 6개 숫자
 - 범위 : 1부터 45까지의 정수
@@ -111,7 +124,7 @@ Domain (Lotto, Lottos, WinningLotto, LottoStatistics)
 
 ---
 
-## ⚠️ 예외 처리
+## 예외 처리
 프로그램은 사용자의 잘못된 입력을 할 시에 예외를 발생시키고 에러 메시지를 출력한 후 재입력을 요청합니다.
 
 ### 구입 금액 예외
@@ -142,7 +155,7 @@ Domain (Lotto, Lottos, WinningLotto, LottoStatistics)
 
 ---
 
-## 📝 구현 기능 목록
+## 구현 기능 목록
 
 ### 1. 입출력 기능
 
@@ -191,7 +204,7 @@ Domain (Lotto, Lottos, WinningLotto, LottoStatistics)
 
 ---
 
-## 💌 커밋 컨벤션
+## 커밋 컨벤션
 
 Following convention : https://gist.github.com/stephenparish/9941e89d80e2bc58a153
 
