@@ -112,5 +112,35 @@ public class InputViewTest {
                 assertThat(exception.getMessage()).isEqualTo("[ERROR] 구입 금액은 숫자여야 합니다.");
             }
         }
+
+        @Nested
+        @DisplayName("숫자가 양수가 맞는지 테스트")
+        class negativeNumberCheckTest {
+            @Test
+            void 입력받은_금액이_음수일_경우_IllegalArgumentException을_던집니다() {
+                // Given
+                Long input = -10L;
+
+                // When & Then
+                assertThrows(IllegalArgumentException.class, () -> {
+                    inputView.negativeNumberCheck(input);
+                });
+            }
+
+            @Test
+            void 입력받은_금액이_음수일_경우_에러메시지를_출력합니다() {
+                // Given
+                Long input = -10L;
+
+                // When
+                IllegalArgumentException exception = assertThrows(
+                        IllegalArgumentException.class,
+                        () -> inputView.negativeNumberCheck(input)
+                );
+
+                // Then
+                assertThat(exception.getMessage()).isEqualTo("[ERROR] 구입 금액은 양수여야 합니다.");
+            }
+        }
     }
 }
