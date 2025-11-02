@@ -23,4 +23,14 @@ public class Lotto {
                         .toList()
         ) + "]\n";
     }
+
+    public int countMatchNumbers(Lotto otherLotto) {
+        return (int) this.numbers.stream()
+                .filter(otherLotto::contains)
+                .count();
+    }
+
+    private boolean contains(Integer number) {
+        return this.numbers.contains(number);
+    }
 }
