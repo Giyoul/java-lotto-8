@@ -31,4 +31,16 @@ public class WinningLottoTest {
                 () -> new WinningLotto(lotto, input)
         );
     }
+
+    @Test
+    void 보너스_번호가_로또_번호와_중복되는_숫자라면_예외가_발생한다() {
+        // Given
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Integer input = 6;
+
+        // When & Then
+        assertThrows(IllegalArgumentException.class,
+                () -> new WinningLotto(lotto, input)
+        );
+    }
 }
