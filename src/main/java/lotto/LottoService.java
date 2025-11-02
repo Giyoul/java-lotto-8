@@ -7,6 +7,7 @@ import java.util.Map;
 
 public class LottoService {
     private static final long LOTTO_PRICE = 1000L;
+    private static final String MATCH_COUNT_PRINT_FORMAT = "당첨 통계\n---\n";
 
     private Lottos lottos;
     private Lotto tempWinnerLotto;
@@ -49,6 +50,24 @@ public class LottoService {
 
     public String generateStatisticMessage() {
         Map<LottoStatistics, Integer> statistics = lottos.calculateStatistics(winningLotto);
-        return null;
+        String matchCountMessage = generateMatchCountMessage(statistics);
+
+        return matchCountMessage;
+    }
+
+    private String generateMatchCountMessage(Map<LottoStatistics, Integer> statistics) {
+        StringBuilder sb = new StringBuilder(MATCH_COUNT_PRINT_FORMAT);
+
+        for (LottoStatistics rank : LottoStatistics.getRanks()) {
+            int count = statistics.get(rank);
+            sb.append(String.format("%s - %d개\n", rank.getDescriptionMessage(), count));
+        }
+        return sb.toString();
+    }
+
+
+    void purchaseLotto(Long purchaseAmount, List<Lotto> lottos) {
+        Long lottoCount = (long) lottos.size();
+        this.lottos = new Lottos(purchaseAmount, lottoCount, lottos);
     }
 }
