@@ -23,7 +23,7 @@ public class LottosTest {
             );
 
             // When
-            Map<LottoStatistics, Integer> statistics = lottoCollection.calculateStatistics(winningLotto);
+            Map<LottoStatistics, Long> statistics = lottoCollection.calculateStatistics(winningLotto);
 
             // Then
             assertEquals(0, statistics.get(LottoStatistics.THREE));
@@ -44,7 +44,7 @@ public class LottosTest {
             );
 
             // When
-            Map<LottoStatistics, Integer> statistics = lottoCollection.calculateStatistics(winningLotto);
+            Map<LottoStatistics, Long> statistics = lottoCollection.calculateStatistics(winningLotto);
 
             // Then
             assertEquals(0, statistics.get(LottoStatistics.FIVE));
@@ -67,7 +67,7 @@ public class LottosTest {
             );
 
             // When
-            Map<LottoStatistics, Integer> statistics = lottoCollection.calculateStatistics(winningLotto);
+            Map<LottoStatistics, Long> statistics = lottoCollection.calculateStatistics(winningLotto);
 
             // Then
             assertEquals(1, statistics.get(LottoStatistics.THREE));
@@ -92,7 +92,7 @@ public class LottosTest {
             );
 
             // When
-            Map<LottoStatistics, Integer> statistics = lottoCollection.calculateStatistics(winningLotto);
+            Map<LottoStatistics, Long> statistics = lottoCollection.calculateStatistics(winningLotto);
 
             // Then
             assertEquals(3, statistics.get(LottoStatistics.THREE));
