@@ -17,9 +17,17 @@ public class LottoController {
     }
 
     private void purchaseLotto(){
-        outputView.printPurchasePrompt();
-        Long purchaseAmount = inputView.readPurchaseAmount();
-        lottoService.purchaseLotto(purchaseAmount);
+        while (true) {
+            try {
+                outputView.printPurchasePrompt();
+                Long purchaseAmount = inputView.readPurchaseAmount();
+                lottoService.purchaseLotto(purchaseAmount);
+            } catch (IllegalArgumentException e) {
+
+            }
+
+        }
+
     }
 
     private void printLotto() {

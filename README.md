@@ -28,7 +28,7 @@
 
 ### 3. 예외 처리 기능
 
-- [ ]  입력받은 구입 금액이 빈 입력인 경우 IllegalArgumentException으로 에러 메시지를 출력한 후 다시 입력받는다.
+- [x]  입력받은 구입 금액이 빈 입력인 경우 IllegalArgumentException으로 에러 메시지를 출력한 후 다시 입력받는다.
 - [ ]  입력받은 구입 금액이 1000원으로 나누어떨어지지 않는 경우 IllegalArgumentException으로 에러 메시지를 출력한 후 다시 입력받는다.
 - [ ]  입력받은 구입 금액이 숫자가 아닌 경우 NumberFormatException으로 에러 메시지를 출력한 후 다시 입력받는다.
 - [ ]  입력받은 구입 금액이 양수가 아닌 경우 IllegalArgumentException으로 에러 메시지를 출력한 후 다시 입력받는다.

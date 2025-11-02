@@ -8,7 +8,18 @@ public class InputView {
 
     public Long readPurchaseAmount() {
         String purchaseAmount = Console.readLine();
+        purchaseAmountValidation(purchaseAmount);
         return Long.parseLong(purchaseAmount);
+    }
+
+    public void purchaseAmountValidation(String purchaseAmount) {
+        emptyInputCheck(purchaseAmount);
+    }
+
+    private void emptyInputCheck(String input) {
+        if (input.isEmpty()) {
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 빈 입력이면 안됩니다.");
+        }
     }
 
     public List<Integer> readWinnerNumbers() {
