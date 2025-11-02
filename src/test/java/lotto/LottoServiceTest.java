@@ -129,7 +129,7 @@ public class LottoServiceTest {
         @Test
         void 일치한_등수가_없는_경우_수익률을_정상적으로_생성한다() {
             // Given
-            Lotto lotto1 = new Lotto(List.of(40, 41, 42, 40, 41, 42));
+            Lotto lotto1 = new Lotto(List.of(40, 41, 42, 43, 44, 45));
             Lotto lotto2 = new Lotto(List.of(40, 41, 42, 43, 44, 45));
             Lotto lotto3 = new Lotto(List.of(40, 41, 42, 43, 44, 45));
             Lotto lotto4 = new Lotto(List.of(40, 41, 42, 43, 44, 45));
