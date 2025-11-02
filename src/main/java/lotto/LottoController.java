@@ -27,5 +27,6 @@ public class LottoController {
         lottoService.saveBonusNumber(bonusNumber);
 
         String statisticMessage = lottoService.generateStatisticMessage();
+        outputView.printFormattedMessage(statisticMessage);
     }
 }
