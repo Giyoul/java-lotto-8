@@ -8,17 +8,25 @@ public class InputView {
 
     public Long readPurchaseAmount() {
         String purchaseAmount = Console.readLine();
-        purchaseAmountValidation(purchaseAmount);
-        return Long.parseLong(purchaseAmount);
+        return purchaseAmountValidation(purchaseAmount);
     }
 
-    public void purchaseAmountValidation(String purchaseAmount) {
+    public Long purchaseAmountValidation(String purchaseAmount) {
         emptyInputCheck(purchaseAmount);
+        return numberFormatCheck(purchaseAmount);
     }
 
-    private void emptyInputCheck(String input) {
+    void emptyInputCheck(String input) {
         if (input.isEmpty()) {
             throw new IllegalArgumentException("[ERROR] 구입 금액은 빈 입력이면 안됩니다.");
+        }
+    }
+
+    Long numberFormatCheck(String input) {
+        try {
+            return Long.parseLong(input);
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException("[ERROR] 구입 금액은 숫자여야 합니다.");
         }
     }
 

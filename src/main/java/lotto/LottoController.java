@@ -22,10 +22,12 @@ public class LottoController {
                 outputView.printPurchasePrompt();
                 Long purchaseAmount = inputView.readPurchaseAmount();
                 lottoService.purchaseLotto(purchaseAmount);
+                break;
+            } catch (NumberFormatException e) {
+                outputView.printExceptionMessage(e.getMessage());
             } catch (IllegalArgumentException e) {
-
+                outputView.printExceptionMessage(e.getMessage());
             }
-
         }
 
     }
