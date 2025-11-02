@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LottoTest {
     @Test
@@ -21,5 +22,16 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // TODO: 추가 기능 구현에 따른 테스트 코드 작성
+    @Test
+    void 다른_로또와_비교해서_일치하는_번호_개수를_정확하게_반환한다() {
+        // Given
+        Lotto lotto1 = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto lotto2 = new Lotto(List.of(1, 2, 3, 10, 11, 12));
+
+        // When
+        int result = lotto1.countMatchNumbers(lotto2);
+
+        // Then
+        assertEquals(result, 3, "다른 로또 번호와 비교해서 일치하는 번호 개수를 정확하게 반환한다.");
+    }
 }
