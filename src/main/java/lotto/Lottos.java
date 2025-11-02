@@ -1,6 +1,8 @@
 package lotto;
 
+import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
 
 public class Lottos {
     public static final String PURCHASE_COUNT_PRINT_FORMAT = "개를 구매했습니다.";
@@ -23,5 +25,24 @@ public class Lottos {
         return String.join("", lotto.stream()
                 .map(Lotto::buildLottoNumberMessage)
                 .toList());
+    }
+
+
+    public Map<LottoStatistics, Integer> calculateStatistics(WinningLotto winningLotto) {
+        Map<LottoStatistics, Integer> rankCounts = new EnumMap<>(LottoStatistics.class);
+
+        for (LottoStatistics rank : LottoStatistics.values()) {
+            rankCounts.put(rank, 0);
+        }
+
+        for (Lotto userLotto : lotto) {
+            int matchCount = winningLotto.countMatchNumbers(userLotto);
+            boolean hasBonus = winningLotto.hasBonusNumber(userLotto);
+
+            LottoStatistics rank = LottoStatistics.valueOf(matchCount, hasBonus);
+            rankCounts.put(rank, rankCounts.get(rank) + 1);
+        }
+
+        return rankCounts;
     }
 }

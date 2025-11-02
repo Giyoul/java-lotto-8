@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class LottoService {
     private static final long LOTTO_PRICE = 1000L;
@@ -38,12 +39,16 @@ public class LottoService {
     String getLottoNumber(){
         return lottos.lottoNumberMessage();
     }
-
     public void saveWinnerNumbers(List<Integer> winnerNumbers) {
         this.tempWinnerLotto = new Lotto(winnerNumbers);
     }
 
     public void saveBonusNumber(Integer bonusNumber) {
         this.winningLotto = new WinningLotto(tempWinnerLotto, bonusNumber);
+    }
+
+    public String generateStatisticMessage() {
+        Map<LottoStatistics, Integer> statistics = lottos.calculateStatistics(winningLotto);
+        return null;
     }
 }
