@@ -48,14 +48,25 @@ public class InputView {
 
     public List<Integer> readWinnerNumbers() {
         String winnerNumber = Console.readLine();
+        emptyWinnerNumberCheck(winnerNumber);
         return parseWinnerNumber(winnerNumber);
     }
 
+    void emptyWinnerNumberCheck(String input) {
+        if (input.isEmpty()) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 빈 입력이면 안됩니다.");
+        }
+    }
+
     List<Integer> parseWinnerNumber(String winnerNumber) {
-        return Arrays.stream(winnerNumber.split(","))
-                .map(String::trim)
-                .map(Integer::parseInt)
-                .toList();
+        try {
+            return Arrays.stream(winnerNumber.split(","))
+                    .map(String::trim)
+                    .map(Integer::parseInt)
+                    .toList();
+        } catch (NumberFormatException e) {
+
+        }
     }
 
     public Integer readBonusNumber() {

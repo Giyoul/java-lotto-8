@@ -12,6 +12,7 @@ public class LottoController {
         purchaseLotto();
         printLotto();
         setWinnerLottoNumber();
+        setWinnerLottoBonusNumber();
         printStatistics();
         cleanResource();
     }
@@ -40,11 +41,20 @@ public class LottoController {
         outputView.printFormattedMessage(purchaseLottoNumber);
     }
 
-    private void setWinnerLottoNumber(){
-        outputView.printWinnerNumberPrompt();
-        List<Integer> winnerNumbers = inputView.readWinnerNumbers();
-        lottoService.saveWinnerNumbers(winnerNumbers);
+    private void setWinnerLottoNumber() {
+        while (true) {
+            try {
+                outputView.printWinnerNumberPrompt();
+                List<Integer> winnerNumbers = inputView.readWinnerNumbers();
+                lottoService.saveWinnerNumbers(winnerNumbers);
+                break;
+            } catch () {
 
+            }
+        }
+    }
+
+    private void setWinnerLottoBonusNumber() {
         outputView.printBonusNumberPrompt();
         Integer bonusNumber = inputView.readBonusNumber();
         lottoService.saveBonusNumber(bonusNumber);

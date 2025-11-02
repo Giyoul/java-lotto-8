@@ -32,7 +32,7 @@
 - [x]  입력받은 구입 금액이 1000원으로 나누어떨어지지 않는 경우 IllegalArgumentException으로 에러 메시지를 출력한 후 다시 입력받는다.
 - [x]  입력받은 구입 금액이 숫자가 아닌 경우 NumberFormatException으로 에러 메시지를 출력한 후 다시 입력받는다.
 - [x]  입력받은 구입 금액이 1000원 미만일 경우 IllegalArgumentException으로 에러 메시지를 출력한 후 다시 입력받는다.
-- [ ]  입력받은 로또 번호가 빈 입력인 경우 IllegalArgumentException으로 에러 메시지를 출력한 후 다시 입력받는다.
+- [x]  입력받은 로또 번호가 빈 입력인 경우 IllegalArgumentException으로 에러 메시지를 출력한 후 다시 입력받는다.
 - [ ]  입력받은 로또 번호가 1부터 45 사이의 숫자가 아닌 경우 IllegalArgumentException으로 에러 메시지를 출력한 후 다시 입력받는다.
 - [ ]  입력받은 로또 번호가 쉼표를 기준으로 구분되어있지 않은 경우 IllegalArgumentException으로 에러 메시지를 출력한 후 다시 입력받는다.
 - [ ]  입력받은 로또 번호를 쉼표를 기준으로 파싱한 결과가 6개가 아닌 경우 IllegalStateException으로 에러 메시지를 출력한 후 다시 입력받는다.
