@@ -153,5 +153,35 @@ public class InputViewTest {
                 assertThat(exception.getMessage()).isEqualTo("[ERROR] 구입 금액은 1000원 이상이어야 합니다.");
             }
         }
+
+        @Nested
+        @DisplayName("입력이 1000원으로 나누어 떨어지는지 체크")
+        class divisibleCheckTest {
+            @Test
+            void 입력받은_금액이_1000원으로_나누어_떨어지지_않는_경우_IllegalArgumentException을_던집니다() {
+                // Given
+                Long input = 4500L;
+
+                // When & Then
+                assertThrows(IllegalArgumentException.class, () -> {
+                    inputView.divisibleCheck(input);
+                });
+            }
+
+            @Test
+            void 입력받은_금액이_1000원으로_나누어_떨어지지_않는_경우_에러메시지를_출력합니다() {
+                // Given
+                Long input = 4500L;
+
+                // When
+                IllegalArgumentException exception = assertThrows(
+                        IllegalArgumentException.class,
+                        () -> inputView.divisibleCheck(input)
+                );
+
+                // Then
+                assertThat(exception.getMessage()).isEqualTo("[ERROR] 구입 금액은 1000원 단위여야 합니다.");
+            }
+        }
     }
 }
