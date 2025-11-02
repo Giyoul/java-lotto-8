@@ -184,4 +184,38 @@ public class InputViewTest {
             }
         }
     }
+
+    @Nested
+    @DisplayName("당첨 번호 입력 테스트")
+    class setWinnerLottoNumberTest {
+        @Nested
+        @DisplayName("당첨 번호 입력이 빈 입력인지 테스트")
+        class emptyWinnerNumberCheckTest {
+            @Test
+            void 입력받은_당첨_번호가_빈_입력일_경우_IllegalArgumentException을_던집니다() {
+                // Given
+                String input = "";
+
+                // When & Then
+                assertThrows(IllegalArgumentException.class, () -> {
+                    inputView.emptyWinnerNumberCheck(input);
+                });
+            }
+
+            @Test
+            void 입력받은_당첨_번호가_빈_입력일_경우_에러메시지를_출력합니다() {
+                // Given
+                String input = "";
+
+                // When
+                IllegalArgumentException exception = assertThrows(
+                        IllegalArgumentException.class,
+                        () -> inputView.emptyWinnerNumberCheck(input)
+                );
+
+                // Then
+                assertThat(exception.getMessage()).isEqualTo("[ERROR] 당첨 번호는 빈 입력이면 안됩니다.");
+            }
+        }
+    }
 }
