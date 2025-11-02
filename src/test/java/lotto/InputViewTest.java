@@ -217,5 +217,35 @@ public class InputViewTest {
                 assertThat(exception.getMessage()).isEqualTo("[ERROR] 당첨 번호는 빈 입력이면 안됩니다.");
             }
         }
+
+        @Nested
+        @DisplayName("입력이 숫자가 맞는지 테스트")
+        class numberInputTest {
+            @Test
+            void 입력받은_당첨_번호가_숫자가_아닐_경우_NumberFormatException을_던집니다() {
+                // Given
+                String input = "1,2,a,4,5,6";
+
+                // When & Then
+                assertThrows(NumberFormatException.class, () -> {
+                    inputView.parseWinnerNumber(input);
+                });
+            }
+
+            @Test
+            void 입력받은_당첨_번호가_숫자가_아닐_경우_에러메시지를_출력합니다() {
+                // Given
+                String input = "1,2,a,4,5,6";
+
+                // When
+                NumberFormatException exception = assertThrows(
+                        NumberFormatException.class,
+                        () -> inputView.parseWinnerNumber(input)
+                );
+
+                // Then
+                assertThat(exception.getMessage()).isEqualTo("[ERROR] 구입 금액은 숫자여야 합니다.");
+            }
+        }
     }
 }
