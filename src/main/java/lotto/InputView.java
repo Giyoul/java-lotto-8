@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class InputView {
+    private static final Long LOTTO_UNIT_PRICE = 1000L;
 
     public Long readPurchaseAmount() {
         String purchaseAmount = Console.readLine();
@@ -15,6 +16,7 @@ public class InputView {
         emptyInputCheck(purchaseAmount);
         Long parsedNumber = numberFormatCheck(purchaseAmount);
         numberBoundaryCheck(parsedNumber);
+        divisibleCheck(parsedNumber);
         return parsedNumber;
     }
 
@@ -33,8 +35,14 @@ public class InputView {
     }
 
     void numberBoundaryCheck(Long parsedNumber) {
-        if (parsedNumber < 1000) {
+        if (parsedNumber < LOTTO_UNIT_PRICE) {
             throw new IllegalArgumentException("[ERROR] 구입 금액은 1000원 이상이어야 합니다.");
+        }
+    }
+
+    void divisibleCheck(Long parsedNumber) {
+        if (parsedNumber % LOTTO_UNIT_PRICE != 0) {
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 1000원 단위여야 합니다.");
         }
     }
 
