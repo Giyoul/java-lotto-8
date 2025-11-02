@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class LottoService {
     private static final long LOTTO_PRICE = 1000L;
-    private static final String MATCH_COUNT_PRINT_FORMAT = "당첨 통계\n---\n";
+    private static final String MATCH_COUNT_PRINT_FORMAT = "\n당첨 통계\n---\n";
     private static final String PROFIT_RATE_FORMAT = "총 수익률은 %.1f%%입니다.";
 
     private Lottos lottos;
