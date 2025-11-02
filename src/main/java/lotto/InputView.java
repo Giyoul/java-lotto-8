@@ -21,7 +21,7 @@ public class InputView {
     }
 
     void emptyInputCheck(String input) {
-        if (input.isEmpty()) {
+        if (input.trim().isEmpty()) {
             throw new IllegalArgumentException("[ERROR] 구입 금액은 빈 입력이면 안됩니다.");
         }
     }
@@ -53,7 +53,7 @@ public class InputView {
     }
 
     void emptyWinnerNumberCheck(String input) {
-        if (input.isEmpty()) {
+        if (input.trim().isEmpty()) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 빈 입력이면 안됩니다.");
         }
     }
@@ -80,7 +80,7 @@ public class InputView {
     }
 
     void emptyBonusNumberCheck(String input) {
-        if(input.isEmpty()){
+        if(input.trim().isEmpty()){
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 빈 입력이면 안됩니다.");
         }
     }
