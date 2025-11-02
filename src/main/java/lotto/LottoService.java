@@ -26,6 +26,22 @@ public class LottoService {
         this.lottos = new Lottos(purchaseAmount, lottoCount, purchasedLotto);
     }
 
+    public void saveWinnerNumbers(List<Integer> winnerNumbers) {
+        this.tempWinnerLotto = new Lotto(winnerNumbers);
+    }
+
+    public void saveBonusNumber(Integer bonusNumber) {
+        this.winningLotto = new WinningLotto(tempWinnerLotto, bonusNumber);
+    }
+
+    public String generateStatisticMessage() {
+        Map<LottoStatistics, Long> statistics = lottos.calculateStatistics(winningLotto);
+        String matchCountMessage = generateMatchCountMessage(statistics);
+        String profitMessage = generateProfitMessage(statistics);
+
+        return matchCountMessage + profitMessage;
+    }
+
     List<Integer> getLottoNumbers(){
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
@@ -41,20 +57,10 @@ public class LottoService {
     String getLottoNumber(){
         return lottos.lottoNumberMessage();
     }
-    public void saveWinnerNumbers(List<Integer> winnerNumbers) {
-        this.tempWinnerLotto = new Lotto(winnerNumbers);
-    }
 
-    public void saveBonusNumber(Integer bonusNumber) {
-        this.winningLotto = new WinningLotto(tempWinnerLotto, bonusNumber);
-    }
-
-    public String generateStatisticMessage() {
-        Map<LottoStatistics, Long> statistics = lottos.calculateStatistics(winningLotto);
-        String matchCountMessage = generateMatchCountMessage(statistics);
-        String profitMessage = generateProfitMessage(statistics);
-
-        return matchCountMessage + profitMessage;
+    void purchaseLotto(Long purchaseAmount, List<Lotto> lottos) {
+        Long lottoCount = (long) lottos.size();
+        this.lottos = new Lottos(purchaseAmount, lottoCount, lottos);
     }
 
     private String generateMatchCountMessage(Map<LottoStatistics, Long> statistics) {
@@ -78,10 +84,5 @@ public class LottoService {
         return statistics.entrySet().stream()
                 .mapToLong(prize -> prize.getKey().getTotalPrize(prize.getValue()))
                 .sum();
-    }
-
-    void purchaseLotto(Long purchaseAmount, List<Lotto> lottos) {
-        Long lottoCount = (long) lottos.size();
-        this.lottos = new Lottos(purchaseAmount, lottoCount, lottos);
     }
 }
