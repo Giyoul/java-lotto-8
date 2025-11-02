@@ -7,7 +7,16 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        validateBoundary(numbers);
         this.numbers = numbers;
+    }
+
+    private void validateBoundary(List<Integer> numbers) {
+        for (int number : numbers) {
+            if (number < 1 || number > 45) {
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 1에서 45 사이의 숫자여야 합니다.");
+            }
+        }
     }
 
     private void validate(List<Integer> numbers) {
