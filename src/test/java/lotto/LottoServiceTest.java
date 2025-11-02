@@ -101,4 +101,51 @@ public class LottoServiceTest {
             assertThat(result).contains("---");
         }
     }
+
+    @Nested
+    class generateProfitMessageTest {
+        @Test
+        void 모든_등수_포함한_수익률을_정상적으로_생성한다() {
+            // Given
+            Lotto lotto1 = new Lotto(List.of(1, 2, 3, 40, 41, 42));
+            Lotto lotto2 = new Lotto(List.of(40, 41, 42, 43, 44, 45));
+            Lotto lotto3 = new Lotto(List.of(40, 41, 42, 43, 44, 45));
+            Lotto lotto4 = new Lotto(List.of(40, 41, 42, 43, 44, 45));
+            Lotto lotto5 = new Lotto(List.of(40, 41, 42, 43, 44, 45));
+
+            List<Lotto> lottos = List.of(lotto1, lotto2, lotto3, lotto4, lotto5);
+
+            lottoService.purchaseLotto(5000L, lottos);
+            lottoService.saveWinnerNumbers(List.of(1, 2, 3, 4, 5, 6));
+            lottoService.saveBonusNumber(7);
+
+            // When
+            String result = lottoService.generateStatisticMessage();
+
+            // Then
+            assertThat(result).contains("총 수익률은 100.0%입니다.");
+        }
+
+        @Test
+        void 일치한_등수가_없는_경우_수익률을_정상적으로_생성한다() {
+            // Given
+            Lotto lotto1 = new Lotto(List.of(40, 41, 42, 40, 41, 42));
+            Lotto lotto2 = new Lotto(List.of(40, 41, 42, 43, 44, 45));
+            Lotto lotto3 = new Lotto(List.of(40, 41, 42, 43, 44, 45));
+            Lotto lotto4 = new Lotto(List.of(40, 41, 42, 43, 44, 45));
+            Lotto lotto5 = new Lotto(List.of(40, 41, 42, 43, 44, 45));
+
+            List<Lotto> lottos = List.of(lotto1, lotto2, lotto3, lotto4, lotto5);
+
+            lottoService.purchaseLotto(5000L, lottos);
+            lottoService.saveWinnerNumbers(List.of(1, 2, 3, 4, 5, 6));
+            lottoService.saveBonusNumber(7);
+
+            // When
+            String result = lottoService.generateStatisticMessage();
+
+            // Then
+            assertThat(result).contains("총 수익률은 0.0%입니다.");
+        }
+    }
 }
