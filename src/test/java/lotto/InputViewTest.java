@@ -248,4 +248,19 @@ public class InputViewTest {
             }
         }
     }
+
+    @Nested
+    @DisplayName("당첨 번호 입력 테스트")
+    class bonusNumberTest {
+        @Test
+        void 보너스_번호는_빈_입력이면_안됩니다() {
+            // Given
+            String input = "";
+
+            // When & Then
+            assertThrows(IllegalArgumentException.class, () -> {
+                inputView.bonusNumberValidation(input);
+            });
+        }
+    }
 }
