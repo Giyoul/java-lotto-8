@@ -76,12 +76,20 @@ public class InputView {
 
     Integer bonusNumberValidation(String bonusNumber) {
         emptyBonusNumberCheck(bonusNumber);
-        return null;
+        return formatCheck(bonusNumber);
     }
 
-    void emptyBonusNumberCheck(String input) {
+    private void emptyBonusNumberCheck(String input) {
         if(input.trim().isEmpty()){
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 빈 입력이면 안됩니다.");
+        }
+    }
+
+    private Integer formatCheck(String bonusNumber) {
+        try {
+            return Integer.parseInt(bonusNumber);
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException("[ERROR] 보너스 번호는 숫자여야 합니다.");
         }
     }
 }
