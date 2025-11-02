@@ -63,7 +63,7 @@ public class InputViewTest {
 
                 // When & Then
                 assertThrows(IllegalArgumentException.class, () -> {
-                    inputView.purchaseAmountValidation(input);
+                    inputView.emptyInputCheck(input);
                 });
             }
 
@@ -75,13 +75,42 @@ public class InputViewTest {
                 // When
                 IllegalArgumentException exception = assertThrows(
                         IllegalArgumentException.class,
-                        () -> inputView.purchaseAmountValidation(input)
+                        () -> inputView.emptyInputCheck(input)
                 );
 
                 // Then
-                assertThat(exception.getMessage().equals("[ERROR] 구입 금액은 빈 입력이면 안됩니다."));
+                assertThat(exception.getMessage()).isEqualTo("[ERROR] 구입 금액은 빈 입력이면 안됩니다.");
             }
         }
 
+        @Nested
+        @DisplayName("입력이 숫자가 맞는지 테스트")
+        class numberInputTest {
+            @Test
+            void 입력받은_금액이_숫자가_아닐_경우_NumberFormatException을_던집니다() {
+                // Given
+                String input = "a";
+
+                // When & Then
+                assertThrows(NumberFormatException.class, () -> {
+                    inputView.numberFormatCheck(input);
+                });
+            }
+
+            @Test
+            void 입력받은_금액이_숫자가_아닐_경우_에러메시지를_출력합니다() {
+                // Given
+                String input = "a";
+
+                // When
+                IllegalArgumentException exception = assertThrows(
+                        NumberFormatException.class,
+                        () -> inputView.numberFormatCheck(input)
+                );
+
+                // Then
+                assertThat(exception.getMessage()).isEqualTo("[ERROR] 구입 금액은 숫자여야 합니다.");
+            }
+        }
     }
 }
