@@ -57,4 +57,48 @@ public class LottoServiceTest {
         // Then
         assertThat(purchaseCount).isEqualTo(5);
     }
+
+    @Nested
+    class generateMatchCountMessageTest {
+        @Test
+        void 모든_등수_포함한_메시지를_생성한다() {
+            // Given
+            Lotto lotto3 = new Lotto(List.of(1, 2, 3, 40, 41, 42));
+            Lotto lotto4 = new Lotto(List.of(1, 2, 3, 4, 41, 42));
+            Lotto lotto5 = new Lotto(List.of(1, 2, 3, 4, 5, 42));
+            Lotto lotto5Bonus = new Lotto(List.of(1, 2, 3, 4, 5, 7));
+            Lotto lotto6 = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+
+            List<Lotto> lottos = List.of(lotto3, lotto4, lotto5, lotto5Bonus, lotto6);
+
+            lottoService.purchaseLotto(5000L);
+            lottoService.saveWinnerNumbers(List.of(1, 2, 3, 4, 5, 6 ));
+            lottoService.saveBonusNumber(7);
+
+            // When
+            String result = lottoService.generateStatisticMessage();
+
+            // Then
+            assertThat(result).contains("3개 일치 (5,000원) - 1개");
+            assertThat(result).contains("4개 일치 (50,000원) - 1개");
+            assertThat(result).contains("5개 일치 (1,500,000원) - 1개");
+            assertThat(result).contains("5개 일치, 보너스 볼 일치 (30,000,000원) - 1개");
+            assertThat(result).contains("6개 일치 (2,000,000,000원) - 1개");
+        }
+
+        @Test
+        void 메시지_헤더와_구분선이_포항된다() {
+            // Given
+            lottoService.purchaseLotto(1000L);
+            lottoService.saveWinnerNumbers(List.of(1, 2, 3, 4, 5, 6 ));
+            lottoService.saveBonusNumber(7);
+
+            // When
+            String result = lottoService.generateStatisticMessage();
+
+            // Then
+            assertThat(result).contains("당첨 통계");
+            assertThat(result).contains("---");
+        }
+    }
 }
