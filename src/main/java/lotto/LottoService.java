@@ -8,6 +8,7 @@ import java.util.Map;
 public class LottoService {
     private static final long LOTTO_PRICE = 1000L;
     private static final String MATCH_COUNT_PRINT_FORMAT = "당첨 통계\n---\n";
+    private static final String PROFIT_RATE_FORMAT = "총 수익률은 %f%%입니다.";
 
     private Lottos lottos;
     private Lotto tempWinnerLotto;
@@ -49,22 +50,35 @@ public class LottoService {
     }
 
     public String generateStatisticMessage() {
-        Map<LottoStatistics, Integer> statistics = lottos.calculateStatistics(winningLotto);
+        Map<LottoStatistics, Long> statistics = lottos.calculateStatistics(winningLotto);
         String matchCountMessage = generateMatchCountMessage(statistics);
+        String profitMessage = generateProfitMessage(statistics);
 
-        return matchCountMessage;
+        return matchCountMessage + profitMessage;
     }
 
-    private String generateMatchCountMessage(Map<LottoStatistics, Integer> statistics) {
+    private String generateMatchCountMessage(Map<LottoStatistics, Long> statistics) {
         StringBuilder sb = new StringBuilder(MATCH_COUNT_PRINT_FORMAT);
 
         for (LottoStatistics rank : LottoStatistics.getRanks()) {
-            int count = statistics.get(rank);
+            long count = statistics.get(rank);
             sb.append(String.format("%s - %d개\n", rank.getDescriptionMessage(), count));
         }
         return sb.toString();
     }
 
+    private String generateProfitMessage(Map<LottoStatistics, Long> statistics) {
+        long totalPrize = calculateTotalPrize(statistics);
+        double profitRate = lottos.calculatePrizeRate(totalPrize);
+
+        return String.format(PROFIT_RATE_FORMAT, profitRate);
+    }
+
+    private long calculateTotalPrize(Map<LottoStatistics, Long> statistics) {
+        return statistics.entrySet().stream()
+                .mapToLong(prize -> prize.getKey().getTotalPrize(prize.getValue()))
+                .sum();
+    }
 
     void purchaseLotto(Long purchaseAmount, List<Lotto> lottos) {
         Long lottoCount = (long) lottos.size();

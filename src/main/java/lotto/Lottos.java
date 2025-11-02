@@ -6,6 +6,8 @@ import java.util.Map;
 
 public class Lottos {
     public static final String PURCHASE_COUNT_PRINT_FORMAT = "개를 구매했습니다.";
+    private static final int PERCENT = 100;
+    private static final double ROUNDING_FACTOR = 100.0;
 
     private final Long purchaseAmount;
     private final Long purchaseCount;
@@ -28,11 +30,11 @@ public class Lottos {
     }
 
 
-    public Map<LottoStatistics, Integer> calculateStatistics(WinningLotto winningLotto) {
-        Map<LottoStatistics, Integer> rankCounts = new EnumMap<>(LottoStatistics.class);
+    public Map<LottoStatistics, Long> calculateStatistics(WinningLotto winningLotto) {
+        Map<LottoStatistics, Long> rankCounts = new EnumMap<>(LottoStatistics.class);
 
         for (LottoStatistics rank : LottoStatistics.values()) {
-            rankCounts.put(rank, 0);
+            rankCounts.put(rank, 0L);
         }
 
         for (Lotto userLotto : lotto) {
@@ -44,5 +46,11 @@ public class Lottos {
         }
 
         return rankCounts;
+    }
+
+    public double calculatePrizeRate(long totalPrize) {
+        double profitRate = (double) totalPrize / purchaseAmount;
+        double percentage = profitRate * PERCENT;
+        return Math.round(percentage * ROUNDING_FACTOR) / ROUNDING_FACTOR;
     }
 }

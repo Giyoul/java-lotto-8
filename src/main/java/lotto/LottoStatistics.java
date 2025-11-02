@@ -48,4 +48,8 @@ public enum LottoStatistics {
     public static LottoStatistics[] getRanks() {
         return new LottoStatistics[]{THREE, FOUR, FIVE, FIVE_BONUS, SIX};
     }
+
+    public Long getTotalPrize(Long rankCount) {
+        return this.prize * rankCount;
+    }
 }
