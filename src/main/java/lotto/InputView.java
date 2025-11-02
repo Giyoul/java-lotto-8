@@ -71,6 +71,17 @@ public class InputView {
 
     public Integer readBonusNumber() {
         String bonusNumber = Console.readLine();
-        return Integer.parseInt(bonusNumber);
+        return bonusNumberValidation(bonusNumber);
+    }
+
+    Integer bonusNumberValidation(String bonusNumber) {
+        emptyBonusNumberCheck(bonusNumber);
+        return null;
+    }
+
+    void emptyBonusNumberCheck(String input) {
+        if(input.isEmpty()){
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 빈 입력이면 안됩니다.");
+        }
     }
 }
