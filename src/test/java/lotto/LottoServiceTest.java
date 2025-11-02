@@ -71,8 +71,8 @@ public class LottoServiceTest {
 
             List<Lotto> lottos = List.of(lotto3, lotto4, lotto5, lotto5Bonus, lotto6);
 
-            lottoService.purchaseLotto(5000L);
-            lottoService.saveWinnerNumbers(List.of(1, 2, 3, 4, 5, 6 ));
+            lottoService.purchaseLotto(5000L, lottos);
+            lottoService.saveWinnerNumbers(List.of(1, 2, 3, 4, 5, 6));
             lottoService.saveBonusNumber(7);
 
             // When
