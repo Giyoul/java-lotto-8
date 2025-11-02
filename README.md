@@ -38,9 +38,9 @@
 - [x]  입력받은 로또 번호를 쉼표를 기준으로 파싱한 결과가 숫자가 아닌 경우 NumberFormatException으로 에러 메시지를 출력한 후 다시 입력받는다.
 - [x]  입력받은 로또 번호를 쉼표를 기준으로 파싱한 결과에 중복되는 숫자가 있는 경우 IllegalArgumentException으로 에러 메시지를 출력한 후 다시 입력받는다.
 - [x]  입력받은 보너스 번호가 빈 입력인 경우 IllegalArgumentException으로 에러 메시지를 출력한 후 다시 입력받는다.
-- [ ]  입력받은 보너스 번호가 숫자가 아닌 경우 NumberFormatException으로 에러 메시지를 출력한 후 다시 입력받는다.
-- [ ]  입력받은 보너스 번호가 1부터 45 사이의 숫자가 아닌 경우 IllegalArgumentException으로 에러 메시지를 출력한 후 다시 입력받는다.
-- [ ]  입력받은 보너스 번호가 입력받은 로또 번호와 중복되는 숫자가 있는 경우 IllegalStateException으로 에러 메시지를 출력한 후 다시 입력받는다.
+- [x]  입력받은 보너스 번호가 숫자가 아닌 경우 NumberFormatException으로 에러 메시지를 출력한 후 다시 입력받는다.
+- [x]  입력받은 보너스 번호가 1부터 45 사이의 숫자가 아닌 경우 IllegalArgumentException으로 에러 메시지를 출력한 후 다시 입력받는다.
+- [x]  입력받은 보너스 번호가 입력받은 로또 번호와 중복되는 숫자가 있는 경우 IllegalStateException으로 에러 메시지를 출력한 후 다시 입력받는다.
 
 ### 4. 기타
 

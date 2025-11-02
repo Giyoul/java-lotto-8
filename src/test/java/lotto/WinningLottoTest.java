@@ -39,7 +39,7 @@ public class WinningLottoTest {
         Integer input = 6;
 
         // When & Then
-        assertThrows(IllegalArgumentException.class,
+        assertThrows(IllegalStateException.class,
                 () -> new WinningLotto(lotto, input)
         );
     }

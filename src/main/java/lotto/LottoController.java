@@ -63,7 +63,7 @@ public class LottoController {
                 Integer bonusNumber = inputView.readBonusNumber();
                 lottoService.saveBonusNumber(bonusNumber);
                 break;
-            } catch (NumberFormatException e) {
+            } catch (NumberFormatException | IllegalStateException e) {
                 outputView.printExceptionMessage(e.getMessage());
             } catch (IllegalArgumentException e) {
                 outputView.printExceptionMessage(e.getMessage());
