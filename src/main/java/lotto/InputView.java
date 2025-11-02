@@ -65,7 +65,7 @@ public class InputView {
                     .map(Integer::parseInt)
                     .toList();
         } catch (NumberFormatException e) {
-
+            throw new NumberFormatException("[ERROR] 당첨 번호는 숫자여야 합니다.");
         }
     }
 

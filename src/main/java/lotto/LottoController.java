@@ -48,8 +48,10 @@ public class LottoController {
                 List<Integer> winnerNumbers = inputView.readWinnerNumbers();
                 lottoService.saveWinnerNumbers(winnerNumbers);
                 break;
-            } catch () {
-
+            } catch (NumberFormatException e) {
+                outputView.printExceptionMessage(e.getMessage());
+            } catch (IllegalArgumentException e) {
+                outputView.printExceptionMessage(e.getMessage());
             }
         }
     }
