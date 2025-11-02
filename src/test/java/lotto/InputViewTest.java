@@ -2,6 +2,7 @@ package lotto;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.HashSet;
 import java.util.List;
@@ -46,5 +47,41 @@ public class InputViewTest {
             // Then
             assertThat(numbers.stream().allMatch(num -> num >= 1 && num <= 45)).isEqualTo(true);
         }
+    }
+
+    @Nested
+    @DisplayName("구입 금액 입력 테스트")
+    class purchaseAmountValidationTest {
+
+        @Nested
+        @DisplayName("빈 입력 테스트")
+        class emptyInputTest {
+            @Test
+            void 입력받은_금액은_빈_입력일_경우_IllegalArgumentException을_던집니다() {
+                // Given
+                String input = "";
+
+                // When & Then
+                assertThrows(IllegalArgumentException.class, () -> {
+                    inputView.purchaseAmountValidation(input);
+                });
+            }
+
+            @Test
+            void 입력받은_금액은_빈_입력일_경우_에러메시지를_출력합니다() {
+                // Given
+                String input = "";
+
+                // When
+                IllegalArgumentException exception = assertThrows(
+                        IllegalArgumentException.class,
+                        () -> inputView.purchaseAmountValidation(input)
+                );
+
+                // Then
+                assertThat(exception.getMessage().equals("[ERROR] 구입 금액은 빈 입력이면 안됩니다."));
+            }
+        }
+
     }
 }
