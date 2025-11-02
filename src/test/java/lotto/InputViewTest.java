@@ -103,7 +103,7 @@ public class InputViewTest {
                 String input = "a";
 
                 // When
-                IllegalArgumentException exception = assertThrows(
+                NumberFormatException exception = assertThrows(
                         NumberFormatException.class,
                         () -> inputView.numberFormatCheck(input)
                 );
