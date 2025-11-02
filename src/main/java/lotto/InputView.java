@@ -13,7 +13,9 @@ public class InputView {
 
     public Long purchaseAmountValidation(String purchaseAmount) {
         emptyInputCheck(purchaseAmount);
-        return numberFormatCheck(purchaseAmount);
+        Long parsedNumber = numberFormatCheck(purchaseAmount);
+        numberBoundaryCheck(parsedNumber);
+        return parsedNumber;
     }
 
     void emptyInputCheck(String input) {
@@ -27,6 +29,12 @@ public class InputView {
             return Long.parseLong(input);
         } catch (NumberFormatException e) {
             throw new NumberFormatException("[ERROR] 구입 금액은 숫자여야 합니다.");
+        }
+    }
+
+    void numberBoundaryCheck(Long parsedNumber) {
+        if (parsedNumber < 1000) {
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 1000원 이상이어야 합니다.");
         }
     }
 

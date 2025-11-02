@@ -123,7 +123,7 @@ public class InputViewTest {
 
                 // When & Then
                 assertThrows(IllegalArgumentException.class, () -> {
-                    inputView.negativeNumberCheck(input);
+                    inputView.numberBoundaryCheck(input);
                 });
             }
 
@@ -134,7 +134,7 @@ public class InputViewTest {
 
                 // When & Then
                 assertThrows(IllegalArgumentException.class, () -> {
-                    inputView.negativeNumberCheck(input);
+                    inputView.numberBoundaryCheck(input);
                 });
             }
 
@@ -146,7 +146,7 @@ public class InputViewTest {
                 // When
                 IllegalArgumentException exception = assertThrows(
                         IllegalArgumentException.class,
-                        () -> inputView.negativeNumberCheck(input)
+                        () -> inputView.numberBoundaryCheck(input)
                 );
 
                 // Then
