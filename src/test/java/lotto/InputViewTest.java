@@ -114,12 +114,23 @@ public class InputViewTest {
         }
 
         @Nested
-        @DisplayName("숫자가 양수가 맞는지 테스트")
+        @DisplayName("숫자가 1000원 이상인지 테스트")
         class negativeNumberCheckTest {
             @Test
             void 입력받은_금액이_음수일_경우_IllegalArgumentException을_던집니다() {
                 // Given
                 Long input = -10L;
+
+                // When & Then
+                assertThrows(IllegalArgumentException.class, () -> {
+                    inputView.negativeNumberCheck(input);
+                });
+            }
+
+            @Test
+            void 입력받은_금액이_1000원_미만일_경우_IllegalArgumentException을_던집니다() {
+                // Given
+                Long input = 500L;
 
                 // When & Then
                 assertThrows(IllegalArgumentException.class, () -> {
@@ -139,7 +150,7 @@ public class InputViewTest {
                 );
 
                 // Then
-                assertThat(exception.getMessage()).isEqualTo("[ERROR] 구입 금액은 양수여야 합니다.");
+                assertThat(exception.getMessage()).isEqualTo("[ERROR] 구입 금액은 1000원 이상이어야 합니다.");
             }
         }
     }
