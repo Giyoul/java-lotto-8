@@ -1,5 +1,6 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class LottoController {
@@ -12,6 +13,7 @@ public class LottoController {
         printLotto();
         setWinnerLottoNumber();
         printStatistics();
+        cleanResource();
     }
 
     private void purchaseLotto(){
@@ -41,5 +43,9 @@ public class LottoController {
     private void printStatistics() {
         String statisticMessage = lottoService.generateStatisticMessage();
         outputView.printFormattedMessage(statisticMessage);
+    }
+
+    private void cleanResource() {
+        Console.close();
     }
 }
