@@ -244,7 +244,7 @@ public class InputViewTest {
                 );
 
                 // Then
-                assertThat(exception.getMessage()).isEqualTo("[ERROR] 구입 금액은 숫자여야 합니다.");
+                assertThat(exception.getMessage()).isEqualTo("[ERROR] 당첨 번호는 숫자여야 합니다.");
             }
         }
     }
