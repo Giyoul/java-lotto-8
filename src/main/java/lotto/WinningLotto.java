@@ -8,4 +8,12 @@ public class WinningLotto {
         this.lotto = lotto;
         this.bonusNumber = bonusNumber;
     }
+
+    public int countMatchNumbers(Lotto userLotto) {
+        return this.lotto.countMatchNumbers(userLotto);
+    }
+
+    public boolean hasBonusNumber(Lotto userLotto) {
+        return userLotto.contains(bonusNumber);
+    }
 }
