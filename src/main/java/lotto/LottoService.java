@@ -34,10 +34,10 @@ public class LottoService {
         this.winningLotto = new WinningLotto(winnerLotto, bonusNumber);
     }
 
-    public String generateStatisticMessage() {
-        Map<LottoStatistics, Long> statistics = lottos.calculateStatistics(winningLotto);
-        String matchCountMessage = generateMatchCountMessage(statistics);
-        String profitMessage = generateProfitMessage(statistics);
+    public String generateStatisticsMessage() {
+        Map<LottoStatistics, Long> rankStatistics = lottos.calculateStatistics(winningLotto);
+        String matchCountMessage = generateMatchCountMessage(rankStatistics);
+        String profitMessage = generateProfitMessage(rankStatistics);
 
         return matchCountMessage + profitMessage;
     }
@@ -64,13 +64,13 @@ public class LottoService {
     }
 
     private String generateMatchCountMessage(Map<LottoStatistics, Long> statistics) {
-        StringBuilder sb = new StringBuilder(MATCH_COUNT_PRINT_FORMAT);
+        StringBuilder message = new StringBuilder(MATCH_COUNT_PRINT_FORMAT);
 
         for (LottoStatistics rank : LottoStatistics.getRanks()) {
             long count = statistics.get(rank);
-            sb.append(String.format("%s - %d개\n", rank.getDescriptionMessage(), count));
+            message.append(String.format("%s - %d개\n", rank.getDescriptionMessage(), count));
         }
-        return sb.toString();
+        return message.toString();
     }
 
     private String generateProfitMessage(Map<LottoStatistics, Long> statistics) {
@@ -82,7 +82,7 @@ public class LottoService {
 
     private long calculateTotalPrize(Map<LottoStatistics, Long> statistics) {
         return statistics.entrySet().stream()
-                .mapToLong(prize -> prize.getKey().getTotalPrize(prize.getValue()))
+                .mapToLong(entry -> entry.getKey().getTotalPrize(entry.getValue()))
                 .sum();
     }
 }

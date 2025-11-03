@@ -76,7 +76,7 @@ public class LottoServiceTest {
             lottoService.saveBonusNumber(7);
 
             // When
-            String result = lottoService.generateStatisticMessage();
+            String result = lottoService.generateStatisticsMessage();
 
             // Then
             assertThat(result).contains("3개 일치 (5,000원) - 1개");
@@ -94,7 +94,7 @@ public class LottoServiceTest {
             lottoService.saveBonusNumber(7);
 
             // When
-            String result = lottoService.generateStatisticMessage();
+            String result = lottoService.generateStatisticsMessage();
 
             // Then
             assertThat(result).contains("당첨 통계");
@@ -120,7 +120,7 @@ public class LottoServiceTest {
             lottoService.saveBonusNumber(7);
 
             // When
-            String result = lottoService.generateStatisticMessage();
+            String result = lottoService.generateStatisticsMessage();
 
             // Then
             assertThat(result).contains("총 수익률은 100.0%입니다.");
@@ -142,7 +142,7 @@ public class LottoServiceTest {
             lottoService.saveBonusNumber(7);
 
             // When
-            String result = lottoService.generateStatisticMessage();
+            String result = lottoService.generateStatisticsMessage();
 
             // Then
             assertThat(result).contains("총 수익률은 0.0%입니다.");

@@ -73,7 +73,7 @@ public class LottoController {
     }
 
     private void printStatistics() {
-        String statisticMessage = lottoService.generateStatisticMessage();
+        String statisticMessage = lottoService.generateStatisticsMessage();
         outputView.printFormattedMessage(statisticMessage);
     }
 
