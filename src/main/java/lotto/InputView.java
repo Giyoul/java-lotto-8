@@ -6,6 +6,7 @@ import java.util.List;
 
 public class InputView {
     private static final Long LOTTO_UNIT_PRICE = 1000L;
+    private static final String NUMBER_DELIMITER = ",";
 
     public Long readPurchaseAmount() {
         String purchaseAmount = Console.readLine();
@@ -53,7 +54,7 @@ public class InputView {
 
     List<Integer> parseWinnerNumber(String winnerNumber) {
         try {
-            return Arrays.stream(winnerNumber.split(","))
+            return Arrays.stream(winnerNumber.split(NUMBER_DELIMITER))
                     .map(String::trim)
                     .map(Integer::parseInt)
                     .toList();
