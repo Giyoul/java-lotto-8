@@ -18,19 +18,11 @@ public class LottoController {
     }
 
     private void purchaseLotto(){
-        while (true) {
-            try {
-                outputView.printPurchasePrompt();
-                Long purchaseAmount = inputView.readPurchaseAmount();
-                lottoService.purchaseLotto(purchaseAmount);
-                break;
-            } catch (NumberFormatException e) {
-                outputView.printExceptionMessage(e.getMessage());
-            } catch (IllegalArgumentException e) {
-                outputView.printExceptionMessage(e.getMessage());
-            }
-        }
-
+        retryUntilSuccess(() -> {
+            outputView.printPurchasePrompt();
+            Long purchaseAmount = inputView.readPurchaseAmount();
+            lottoService.purchaseLotto(purchaseAmount);
+        });
     }
 
     private void printLotto() {
@@ -42,34 +34,19 @@ public class LottoController {
     }
 
     private void setWinnerLottoNumber() {
-        while (true) {
-            try {
-                outputView.printWinnerNumberPrompt();
-                List<Integer> winnerNumbers = inputView.readWinnerNumbers();
-                lottoService.saveWinnerNumbers(winnerNumbers);
-                break;
-            } catch (NumberFormatException e) {
-                outputView.printExceptionMessage(e.getMessage());
-            } catch (IllegalArgumentException e) {
-                outputView.printExceptionMessage(e.getMessage());
-            }
-        }
+        retryUntilSuccess(() -> {
+            outputView.printWinnerNumberPrompt();
+            List<Integer> winnerNumbers = inputView.readWinnerNumbers();
+            lottoService.saveWinnerNumbers(winnerNumbers);
+        });
     }
 
     private void setWinnerLottoBonusNumber() {
-        while (true) {
-            try {
-                outputView.printBonusNumberPrompt();
-                Integer bonusNumber = inputView.readBonusNumber();
-                lottoService.saveBonusNumber(bonusNumber);
-                break;
-            } catch (NumberFormatException | IllegalStateException e) {
-                outputView.printExceptionMessage(e.getMessage());
-            } catch (IllegalArgumentException e) {
-                outputView.printExceptionMessage(e.getMessage());
-            }
-        }
-
+        retryUntilSuccess(() -> {
+            outputView.printBonusNumberPrompt();
+            Integer bonusNumber = inputView.readBonusNumber();
+            lottoService.saveBonusNumber(bonusNumber);
+        });
     }
 
     private void printStatistics() {
@@ -79,5 +56,19 @@ public class LottoController {
 
     private void closeConsole() {
         Console.close();
+    }
+
+    private void retryUntilSuccess(Runnable action) {
+        while(true){
+            try {
+                action.run();
+                break;
+            } catch (NumberFormatException | IllegalStateException exception) {
+                outputView.printExceptionMessage(exception.getMessage());
+            } catch (IllegalArgumentException illegalArgumentException) {
+                outputView.printExceptionMessage(illegalArgumentException.getMessage());
+
+            }
+        }
     }
 }
