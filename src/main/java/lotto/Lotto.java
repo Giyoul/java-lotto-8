@@ -4,6 +4,13 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
+    private static final Integer LOTTO_NUMBER_COUNT = 6;
+    private static final Integer MIN_LOTTO_NUMBER = 1;
+    private static final Integer MAX_LOTTO_NUMBER = 45;
+    private static final String NUMBER_SEPARATOR = ", ";
+    private static final String LOTTO_FORMAT_START = "[";
+    private static final String LOTTO_FORMAT_END = "]\n";
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -14,14 +21,14 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LOTTO_NUMBER_COUNT) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
         }
     }
 
     private void validateBoundary(List<Integer> numbers) {
         for (int number : numbers) {
-            if (number < 1 || number > 45) {
+            if (number < MIN_LOTTO_NUMBER || number > MAX_LOTTO_NUMBER) {
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
             }
         }
@@ -35,11 +42,11 @@ public class Lotto {
     }
 
     public String buildLottoNumberMessage(){
-        return "[" + String.join(", ",
+        return LOTTO_FORMAT_START + String.join(NUMBER_SEPARATOR,
                 numbers.stream()
                         .map(String::valueOf)
                         .toList()
-        ) + "]\n";
+        ) + LOTTO_FORMAT_END;
     }
 
     public int countMatchNumbers(Lotto otherLotto) {

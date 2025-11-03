@@ -6,9 +6,13 @@ import java.util.List;
 import java.util.Map;
 
 public class LottoService {
-    private static final long LOTTO_PRICE = 1000L;
+    private static final Long LOTTO_PRICE = 1000L;
+    private static final Integer LOTTO_MIN_NUMBER = 1;
+    private static final Integer LOTTO_MAX_NUMBER = 45;
+    private static final Integer LOTTO_NUMBER_COUNT = 6;
     private static final String MATCH_COUNT_PRINT_FORMAT = "\n당첨 통계\n---\n";
     private static final String PROFIT_RATE_FORMAT = "총 수익률은 %.1f%%입니다.";
+    private static final String STATISTICS_ROW_FORMAT = "%s - %d개\n";
 
     private Lottos lottos;
     private Lotto winnerLotto;
@@ -43,7 +47,7 @@ public class LottoService {
     }
 
     List<Integer> getLottoNumbers(){
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return Randoms.pickUniqueNumbersInRange(LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER, LOTTO_NUMBER_COUNT);
     }
 
     Long calculateLottoCount(Long purchaseAmount) {
@@ -68,7 +72,7 @@ public class LottoService {
 
         for (LottoStatistics rank : LottoStatistics.getRanks()) {
             long count = statistics.get(rank);
-            message.append(String.format("%s - %d개\n", rank.getDescriptionMessage(), count));
+            message.append(String.format(STATISTICS_ROW_FORMAT, rank.getDescriptionMessage(), count));
         }
         return message.toString();
     }
