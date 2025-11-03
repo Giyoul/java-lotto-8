@@ -75,7 +75,7 @@ public class InputView {
         }
     }
 
-    private void validateNotEmpty(String input, String errorMessage) {
+    void validateNotEmpty(String input, String errorMessage) {
         if (input.trim().isEmpty()) {
             throw new IllegalArgumentException(errorMessage);
         }

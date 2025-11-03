@@ -63,7 +63,7 @@ public class InputViewTest {
 
                 // When & Then
                 assertThrows(IllegalArgumentException.class, () -> {
-                    inputView.validateNotEmpty(input);
+                    inputView.validateNotEmpty(input, "[ERROR] 구입 금액은 빈 입력이면 안됩니다.");
                 });
             }
 
@@ -75,7 +75,7 @@ public class InputViewTest {
                 // When
                 IllegalArgumentException exception = assertThrows(
                         IllegalArgumentException.class,
-                        () -> inputView.validateNotEmpty(input)
+                        () -> inputView.validateNotEmpty(input, "[ERROR] 구입 금액은 빈 입력이면 안됩니다.")
                 );
 
                 // Then
@@ -198,7 +198,7 @@ public class InputViewTest {
 
                 // When & Then
                 assertThrows(IllegalArgumentException.class, () -> {
-                    inputView.validateWinnerNumbersNotEmpty(input);
+                    inputView.validateNotEmpty(input, "[ERROR] 당첨 번호는 빈 입력이면 안됩니다.");
                 });
             }
 
@@ -210,7 +210,7 @@ public class InputViewTest {
                 // When
                 IllegalArgumentException exception = assertThrows(
                         IllegalArgumentException.class,
-                        () -> inputView.validateWinnerNumbersNotEmpty(input)
+                        () -> inputView.validateNotEmpty(input, "[ERROR] 당첨 번호는 빈 입력이면 안됩니다.")
                 );
 
                 // Then
