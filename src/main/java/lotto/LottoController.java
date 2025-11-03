@@ -14,7 +14,7 @@ public class LottoController {
         setWinnerLottoNumber();
         setWinnerLottoBonusNumber();
         printStatistics();
-        cleanResource();
+        closeConsole();
     }
 
     private void purchaseLotto(){
@@ -77,7 +77,7 @@ public class LottoController {
         outputView.printFormattedMessage(statisticMessage);
     }
 
-    private void cleanResource() {
+    private void closeConsole() {
         Console.close();
     }
 }

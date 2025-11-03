@@ -13,20 +13,20 @@ public class InputView {
     }
 
     public Long purchaseAmountValidation(String purchaseAmount) {
-        emptyInputCheck(purchaseAmount);
-        Long parsedNumber = numberFormatCheck(purchaseAmount);
+        validateNotEmpty(purchaseAmount);
+        Long parsedNumber = parsePurchaseAmount(purchaseAmount);
         numberBoundaryCheck(parsedNumber);
         divisibleCheck(parsedNumber);
         return parsedNumber;
     }
 
-    void emptyInputCheck(String input) {
+    void validateNotEmpty(String input) {
         if (input.trim().isEmpty()) {
             throw new IllegalArgumentException("[ERROR] 구입 금액은 빈 입력이면 안됩니다.");
         }
     }
 
-    Long numberFormatCheck(String input) {
+    Long parsePurchaseAmount(String input) {
         try {
             return Long.parseLong(input);
         } catch (NumberFormatException e) {
@@ -48,11 +48,11 @@ public class InputView {
 
     public List<Integer> readWinnerNumbers() {
         String winnerNumber = Console.readLine();
-        emptyWinnerNumberCheck(winnerNumber);
+        validateWinnerNumbersNotEmpty(winnerNumber);
         return parseWinnerNumber(winnerNumber);
     }
 
-    void emptyWinnerNumberCheck(String input) {
+    void validateWinnerNumbersNotEmpty(String input) {
         if (input.trim().isEmpty()) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 빈 입력이면 안됩니다.");
         }
@@ -75,17 +75,17 @@ public class InputView {
     }
 
     Integer bonusNumberValidation(String bonusNumber) {
-        emptyBonusNumberCheck(bonusNumber);
-        return formatCheck(bonusNumber);
+        validateBonusNumberNotEmpty(bonusNumber);
+        return parseBonusNumber(bonusNumber);
     }
 
-    private void emptyBonusNumberCheck(String input) {
+    private void validateBonusNumberNotEmpty(String input) {
         if(input.trim().isEmpty()){
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 빈 입력이면 안됩니다.");
         }
     }
 
-    private Integer formatCheck(String bonusNumber) {
+    private Integer parseBonusNumber(String bonusNumber) {
         try {
             return Integer.parseInt(bonusNumber);
         } catch (NumberFormatException e) {

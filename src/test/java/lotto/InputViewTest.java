@@ -63,7 +63,7 @@ public class InputViewTest {
 
                 // When & Then
                 assertThrows(IllegalArgumentException.class, () -> {
-                    inputView.emptyInputCheck(input);
+                    inputView.validateNotEmpty(input);
                 });
             }
 
@@ -75,7 +75,7 @@ public class InputViewTest {
                 // When
                 IllegalArgumentException exception = assertThrows(
                         IllegalArgumentException.class,
-                        () -> inputView.emptyInputCheck(input)
+                        () -> inputView.validateNotEmpty(input)
                 );
 
                 // Then
@@ -93,7 +93,7 @@ public class InputViewTest {
 
                 // When & Then
                 assertThrows(NumberFormatException.class, () -> {
-                    inputView.numberFormatCheck(input);
+                    inputView.parsePurchaseAmount(input);
                 });
             }
 
@@ -105,7 +105,7 @@ public class InputViewTest {
                 // When
                 NumberFormatException exception = assertThrows(
                         NumberFormatException.class,
-                        () -> inputView.numberFormatCheck(input)
+                        () -> inputView.parsePurchaseAmount(input)
                 );
 
                 // Then
@@ -198,7 +198,7 @@ public class InputViewTest {
 
                 // When & Then
                 assertThrows(IllegalArgumentException.class, () -> {
-                    inputView.emptyWinnerNumberCheck(input);
+                    inputView.validateWinnerNumbersNotEmpty(input);
                 });
             }
 
@@ -210,7 +210,7 @@ public class InputViewTest {
                 // When
                 IllegalArgumentException exception = assertThrows(
                         IllegalArgumentException.class,
-                        () -> inputView.emptyWinnerNumberCheck(input)
+                        () -> inputView.validateWinnerNumbersNotEmpty(input)
                 );
 
                 // Then
