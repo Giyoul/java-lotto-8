@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Service class for managing lotto operations.
+ */
 public class LottoService {
     private static final Long LOTTO_PRICE = 1000L;
     private static final Integer LOTTO_MIN_NUMBER = 1;

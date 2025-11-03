@@ -4,6 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Handles user input for the lotto application.
+ */
 public class InputView {
     private static final Long LOTTO_UNIT_PRICE = 1000L;
     private static final String NUMBER_DELIMITER = ",";

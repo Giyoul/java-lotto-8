@@ -3,6 +3,9 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
+/**
+ * Controller class that coordinates the lotto application flow.
+ */
 public class LottoController {
     private final OutputView outputView = new OutputView();
     private final InputView inputView = new InputView();

@@ -1,5 +1,8 @@
 package lotto;
 
+/**
+ * Represents the different winning ranks in the lotto game.
+ */
 public enum LottoStatistics {
     THREE(3, false, 5000L),
     FOUR(4, false, 50000L),

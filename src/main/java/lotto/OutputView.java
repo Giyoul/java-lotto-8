@@ -1,5 +1,8 @@
 package lotto;
 
+/**
+ * Handles output display for the lotto application.
+ */
 public class OutputView {
     private static final String ASK_PURCHASE = "구입금액을 입력해 주세요.";
     private static final String ASK_WINNER_NUMBER = "당첨 번호를 입력해 주세요.";

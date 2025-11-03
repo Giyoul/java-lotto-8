@@ -1,5 +1,8 @@
 package lotto;
 
+/**
+ * Represents the winning lotto numbers with a bonus number.
+ */
 public class WinningLotto {
     private static final Integer MIN_LOTTO_NUMBER = 1;
     private static final Integer MAX_LOTTO_NUMBER = 45;

@@ -3,6 +3,9 @@ package lotto;
 import java.util.HashSet;
 import java.util.List;
 
+/**
+ * Represents a lotto ticket with 6 numbers.
+ */
 public class Lotto {
     private static final Integer LOTTO_NUMBER_COUNT = 6;
     private static final Integer MIN_LOTTO_NUMBER = 1;

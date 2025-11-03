@@ -4,6 +4,9 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Represents a collection of purchased lotto tickets.
+ */
 public class Lottos {
     public static final String PURCHASE_COUNT_PRINT_FORMAT = "개를 구매했습니다.";
     private static final int PERCENT = 100;
