@@ -20,6 +20,24 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public String buildLottoNumberMessage(){
+        return LOTTO_FORMAT_START + String.join(NUMBER_SEPARATOR,
+                numbers.stream()
+                        .map(String::valueOf)
+                        .toList()
+        ) + LOTTO_FORMAT_END;
+    }
+
+    public int countMatchNumbers(Lotto otherLotto) {
+        return (int) this.numbers.stream()
+                .filter(otherLotto::contains)
+                .count();
+    }
+
+    public boolean contains(Integer number) {
+        return this.numbers.contains(number);
+    }
+
     private void validate(List<Integer> numbers) {
         if (numbers.size() != LOTTO_NUMBER_COUNT) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
@@ -39,23 +57,5 @@ public class Lotto {
         if (uniqueNumbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 중복되면 안됩니다.");
         }
-    }
-
-    public String buildLottoNumberMessage(){
-        return LOTTO_FORMAT_START + String.join(NUMBER_SEPARATOR,
-                numbers.stream()
-                        .map(String::valueOf)
-                        .toList()
-        ) + LOTTO_FORMAT_END;
-    }
-
-    public int countMatchNumbers(Lotto otherLotto) {
-        return (int) this.numbers.stream()
-                .filter(otherLotto::contains)
-                .count();
-    }
-
-    public boolean contains(Integer number) {
-        return this.numbers.contains(number);
     }
 }

@@ -68,17 +68,17 @@ public class InputView {
         return parseBonusNumber(bonusNumber);
     }
 
+    void validateNotEmpty(String input, String errorMessage) {
+        if (input.trim().isEmpty()) {
+            throw new IllegalArgumentException(errorMessage);
+        }
+    }
+
     private Integer parseBonusNumber(String bonusNumber) {
         try {
             return Integer.parseInt(bonusNumber);
         } catch (NumberFormatException e) {
             throw new NumberFormatException("[ERROR] 보너스 번호는 숫자여야 합니다.");
-        }
-    }
-
-    void validateNotEmpty(String input, String errorMessage) {
-        if (input.trim().isEmpty()) {
-            throw new IllegalArgumentException(errorMessage);
         }
     }
 }

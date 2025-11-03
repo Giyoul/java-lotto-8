@@ -14,6 +14,14 @@ public class WinningLotto {
         this.bonusNumber = bonusNumber;
     }
 
+    public int countMatchNumbers(Lotto userLotto) {
+        return this.lotto.countMatchNumbers(userLotto);
+    }
+
+    public boolean hasBonusNumber(Lotto userLotto) {
+        return userLotto.contains(bonusNumber);
+    }
+
     private void validateDuplicate(Integer bonusNumber) {
         if (lotto.contains(bonusNumber)) {
             throw new IllegalStateException("[ERROR] 보너스 번호는 로또 번호와 중복되는 숫자가 있으면 안됩니다.");
@@ -24,13 +32,5 @@ public class WinningLotto {
         if (bonusNumber < MIN_LOTTO_NUMBER || bonusNumber > MAX_LOTTO_NUMBER) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
-    }
-
-    public int countMatchNumbers(Lotto userLotto) {
-        return this.lotto.countMatchNumbers(userLotto);
-    }
-
-    public boolean hasBonusNumber(Lotto userLotto) {
-        return userLotto.contains(bonusNumber);
     }
 }
