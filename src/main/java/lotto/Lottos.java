@@ -31,11 +31,7 @@ public class Lottos {
 
 
     public Map<LottoStatistics, Long> calculateStatistics(WinningLotto winningLotto) {
-        Map<LottoStatistics, Long> rankCounts = new EnumMap<>(LottoStatistics.class);
-
-        for (LottoStatistics rank : LottoStatistics.values()) {
-            rankCounts.put(rank, 0L);
-        }
+        Map<LottoStatistics, Long> rankCounts = initializeRankCounts();
 
         for (Lotto userLotto : lotto) {
             int matchCount = winningLotto.countMatchNumbers(userLotto);
@@ -52,5 +48,13 @@ public class Lottos {
         double profitRate = (double) totalPrize / purchaseAmount;
         double percentage = profitRate * PERCENT;
         return Math.round(percentage * ROUNDING_FACTOR) / ROUNDING_FACTOR;
+    }
+
+    private Map<LottoStatistics, Long> initializeRankCounts() {
+        Map<LottoStatistics, Long> rankCounts = new EnumMap<>(LottoStatistics.class);
+        for (LottoStatistics rank : LottoStatistics.values()) {
+            rankCounts.put(rank, 0L);
+        }
+        return rankCounts;
     }
 }
