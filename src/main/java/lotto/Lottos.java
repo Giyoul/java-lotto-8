@@ -8,6 +8,7 @@ public class Lottos {
     public static final String PURCHASE_COUNT_PRINT_FORMAT = "개를 구매했습니다.";
     private static final int PERCENT = 100;
     private static final double ROUNDING_FACTOR = 100.0;
+    private static final String NEW_LINE = "\n";
 
     private final Long purchaseAmount;
     private final Long purchaseCount;
@@ -20,7 +21,7 @@ public class Lottos {
     }
 
     public String purchaseCountMessage(){
-        return "\n" + purchaseCount + PURCHASE_COUNT_PRINT_FORMAT;
+        return NEW_LINE + purchaseCount + PURCHASE_COUNT_PRINT_FORMAT;
     }
 
     public String lottoNumberMessage() {
