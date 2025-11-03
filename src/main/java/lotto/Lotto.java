@@ -57,7 +57,7 @@ public class Lotto {
 
     private void validateDuplicate(List<Integer> numbers) {
         HashSet<Integer> uniqueNumbers = new HashSet<>(numbers);
-        if (uniqueNumbers.size() != 6) {
+        if (uniqueNumbers.size() != LOTTO_NUMBER_COUNT) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 중복되면 안됩니다.");
         }
     }
