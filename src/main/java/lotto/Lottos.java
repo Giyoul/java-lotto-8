@@ -19,7 +19,7 @@ public class Lottos {
         this.lotto = purchasedLotto;
     }
 
-    public String purchseCountMessage(){
+    public String purchaseCountMessage(){
         return "\n" + purchaseCount + PURCHASE_COUNT_PRINT_FORMAT;
     }
 

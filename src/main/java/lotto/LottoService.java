@@ -51,7 +51,7 @@ public class LottoService {
     }
 
     String getPurchaseCountMessage(){
-        return lottos.purchseCountMessage();
+        return lottos.purchaseCountMessage();
     }
 
     String getLottoNumber(){
