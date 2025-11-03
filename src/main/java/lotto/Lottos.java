@@ -11,12 +11,12 @@ public class Lottos {
 
     private final Long purchaseAmount;
     private final Long purchaseCount;
-    private final List<Lotto> lotto;
+    private final List<Lotto> purchasedLottos;
 
     public Lottos(Long purchaseAmount, Long purchaseCount, List<Lotto> purchasedLotto) {
         this.purchaseAmount = purchaseAmount;
         this.purchaseCount = purchaseCount;
-        this.lotto = purchasedLotto;
+        this.purchasedLottos = purchasedLotto;
     }
 
     public String purchaseCountMessage(){
@@ -24,7 +24,7 @@ public class Lottos {
     }
 
     public String lottoNumberMessage() {
-        return String.join("", lotto.stream()
+        return String.join("", purchasedLottos.stream()
                 .map(Lotto::buildLottoNumberMessage)
                 .toList());
     }
@@ -33,9 +33,9 @@ public class Lottos {
     public Map<LottoStatistics, Long> calculateStatistics(WinningLotto winningLotto) {
         Map<LottoStatistics, Long> rankCounts = initializeRankCounts();
 
-        for (Lotto userLotto : lotto) {
-            int matchCount = winningLotto.countMatchNumbers(userLotto);
-            boolean hasBonus = winningLotto.hasBonusNumber(userLotto);
+        for (Lotto purchasedLotto : purchasedLottos) {
+            int matchCount = winningLotto.countMatchNumbers(purchasedLotto);
+            boolean hasBonus = winningLotto.hasBonusNumber(purchasedLotto);
 
             LottoStatistics rank = LottoStatistics.valueOf(matchCount, hasBonus);
             rankCounts.put(rank, rankCounts.get(rank) + 1);
