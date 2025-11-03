@@ -12,18 +12,23 @@ public class InputView {
         return purchaseAmountValidation(purchaseAmount);
     }
 
+    public List<Integer> readWinnerNumbers() {
+        String winnerNumber = Console.readLine();
+        validateNotEmpty(winnerNumber, "[ERROR] 당첨 번호는 빈 입력이면 안됩니다.");
+        return parseWinnerNumber(winnerNumber);
+    }
+
+    public Integer readBonusNumber() {
+        String bonusNumber = Console.readLine();
+        return bonusNumberValidation(bonusNumber);
+    }
+
     public Long purchaseAmountValidation(String purchaseAmount) {
-        validateNotEmpty(purchaseAmount);
+        validateNotEmpty(purchaseAmount, "[ERROR] 구입 금액은 빈 입력이면 안됩니다.");
         Long parsedNumber = parsePurchaseAmount(purchaseAmount);
         numberBoundaryCheck(parsedNumber);
         divisibleCheck(parsedNumber);
         return parsedNumber;
-    }
-
-    void validateNotEmpty(String input) {
-        if (input.trim().isEmpty()) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 빈 입력이면 안됩니다.");
-        }
     }
 
     Long parsePurchaseAmount(String input) {
@@ -46,18 +51,6 @@ public class InputView {
         }
     }
 
-    public List<Integer> readWinnerNumbers() {
-        String winnerNumber = Console.readLine();
-        validateWinnerNumbersNotEmpty(winnerNumber);
-        return parseWinnerNumber(winnerNumber);
-    }
-
-    void validateWinnerNumbersNotEmpty(String input) {
-        if (input.trim().isEmpty()) {
-            throw new IllegalArgumentException("[ERROR] 당첨 번호는 빈 입력이면 안됩니다.");
-        }
-    }
-
     List<Integer> parseWinnerNumber(String winnerNumber) {
         try {
             return Arrays.stream(winnerNumber.split(","))
@@ -69,20 +62,9 @@ public class InputView {
         }
     }
 
-    public Integer readBonusNumber() {
-        String bonusNumber = Console.readLine();
-        return bonusNumberValidation(bonusNumber);
-    }
-
     Integer bonusNumberValidation(String bonusNumber) {
-        validateBonusNumberNotEmpty(bonusNumber);
+        validateNotEmpty(bonusNumber, "[ERROR] 보너스 번호는 빈 입력이면 안됩니다.");
         return parseBonusNumber(bonusNumber);
-    }
-
-    private void validateBonusNumberNotEmpty(String input) {
-        if(input.trim().isEmpty()){
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 빈 입력이면 안됩니다.");
-        }
     }
 
     private Integer parseBonusNumber(String bonusNumber) {
@@ -90,6 +72,12 @@ public class InputView {
             return Integer.parseInt(bonusNumber);
         } catch (NumberFormatException e) {
             throw new NumberFormatException("[ERROR] 보너스 번호는 숫자여야 합니다.");
+        }
+    }
+
+    private void validateNotEmpty(String input, String errorMessage) {
+        if (input.trim().isEmpty()) {
+            throw new IllegalArgumentException(errorMessage);
         }
     }
 }
