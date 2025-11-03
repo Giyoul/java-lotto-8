@@ -8,6 +8,10 @@ public enum LottoStatistics {
     SIX(6, false, 2000000000L),
     NONE(0, false, 0L);
 
+    private static final Integer MATCH_COUNT_THREE = 3;
+    private static final Integer MATCH_COUNT_FOUR = 4;
+    private static final Integer MATCH_COUNT_FIVE = 5;
+    private static final Integer MATCH_COUNT_SIX = 6;
     private static final String THREE_MATCH_DESCRIPTION = "3개 일치 (5,000원)";
     private static final String FOUR_MATCH_DESCRIPTION = "4개 일치 (50,000원)";
     private static final String FIVE_MATCH_DESCRIPTION = "5개 일치 (1,500,000원)";
@@ -26,13 +30,13 @@ public enum LottoStatistics {
     }
 
     public static LottoStatistics valueOf(int matchCount, boolean hasBonus) {
-        if(matchCount == 6) return SIX;
-        if(matchCount == 5) {
+        if(matchCount == MATCH_COUNT_SIX) return SIX;
+        if(matchCount == MATCH_COUNT_FIVE) {
             if (hasBonus) return FIVE_BONUS;
             return FIVE;
         }
-        if(matchCount == 4) return FOUR;
-        if(matchCount == 3) return THREE;
+        if(matchCount == MATCH_COUNT_FOUR) return FOUR;
+        if(matchCount == MATCH_COUNT_THREE) return THREE;
         return NONE;
     }
 
