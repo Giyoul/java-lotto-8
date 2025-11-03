@@ -11,7 +11,7 @@ public class LottoService {
     private static final String PROFIT_RATE_FORMAT = "총 수익률은 %.1f%%입니다.";
 
     private Lottos lottos;
-    private Lotto tempWinnerLotto;
+    private Lotto winnerLotto;
     private WinningLotto winningLotto;
 
     public void purchaseLotto(Long purchaseAmount){
@@ -27,11 +27,11 @@ public class LottoService {
     }
 
     public void saveWinnerNumbers(List<Integer> winnerNumbers) {
-        this.tempWinnerLotto = new Lotto(winnerNumbers);
+        this.winnerLotto = new Lotto(winnerNumbers);
     }
 
     public void saveBonusNumber(Integer bonusNumber) {
-        this.winningLotto = new WinningLotto(tempWinnerLotto, bonusNumber);
+        this.winningLotto = new WinningLotto(winnerLotto, bonusNumber);
     }
 
     public String generateStatisticMessage() {
